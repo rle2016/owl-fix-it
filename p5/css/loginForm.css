@@ -1,0 +1,25 @@
+#loginbox {
+	margin-top:50px;
+}
+
+#style {
+	padding-top:30px;
+}
+
+#login-alert {
+	display:none;
+}
+
+#bottom {
+	margin-bottom: 25px;
+}
+
+#top {
+	margin-top:10px;
+}
+
+#middle {
+	border-top: 1px solid#888; 
+	padding-top:15px; 
+	font-size:85%;
+}
