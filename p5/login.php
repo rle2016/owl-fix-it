@@ -1,6 +1,6 @@
 <?
 $db_hostname = "localhost";
-$db_username = "rle2016";
-$db_password = "RakPjEua7n";
-$db_database = "rle2016";
+$db_username = "";
+$db_password = "";
+$db_database = "";
 ?>
