@@ -30,7 +30,7 @@ if (isset($_SESSION['username_input']))
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Project 5</title>
+    <title>Owl Fix It</title>
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -98,7 +98,6 @@ if (isset($_SESSION['username_input']))
                     <hr>
                     <div id="buttonPost" class="form-group">         
                     <input type="submit" value="Upload Post" class="btn btn-primary col-md-offset-1" required="true">
-                    <input type="button" id="resetForm" value="Start over" class="btn btn-default">
                     </div>
                 </form>
             </div>
