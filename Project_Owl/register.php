@@ -48,6 +48,33 @@
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
     <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="index.php"><img src="images/owl-logo.png" class="img-responsive" height="260" width="160" alt=""></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden"><a href="#page-top"></a></li>
+                        <li><a class="page-scroll" href="#">Meet Our Team</a></li>
+                        <li><a class="page-scroll" href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <br>
     <div class="container">    
         <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-primary" >
@@ -62,7 +89,7 @@
                         <form id="signupform" class="form-horizontal" role="form" action="register.php" method="post">
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Username</label>
+                                    <label class="col-md-3 control-label">Z-Number</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" id="registerUser" name="registerUser_input" placeholder="Username" required="true">
                                         <?php echo $error ?>
