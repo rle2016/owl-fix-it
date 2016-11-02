@@ -21,7 +21,7 @@ if (isset($_SESSION['username_input']))
   }
 ?>
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -30,7 +30,7 @@ if (isset($_SESSION['username_input']))
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Owl Fix It</title>
+    <title>Owl-Fix-It</title>
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -72,19 +72,18 @@ if (isset($_SESSION['username_input']))
                 <form id="form" class="form-horizontal" method="POST" action="wall.php" enctype="multipart/form-data">
                     
                     <div class="form-group">
-                        <label for="title" class="control-label col-xs-1">Title</label>
+                        <label for="Location" class="control-label col-xs-1">Location</label>
                         <div class="col-xs-11">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-header fa-fw"></span></span>
-                                <input type="text" class="form-control" id="title" name="title" 
-                            maxlength="20" size="20" value="" required autofocus>
-                            </div>
+                            <select class="form-control" id="select" name="Location">
+                        <option  value="76(BK)">76(BK)-Bookstore</option>
+                        <option  value="69(CO)">69(CO)-Campus Operation Building</option>
                         </div>
                     </div>
                       
                     <div class="form-group">
                         <label for="text" class="control-label col-xs-1">Text</label>
                         <div class="col-xs-11">
+                            
                             <textarea class="form-control" id="text" name="text" maxlength="140" placeholder="140 characters" required></textarea>
                         </div>
                     </div>
@@ -94,10 +93,25 @@ if (isset($_SESSION['username_input']))
                         <img id="image" name="image" src="images/default.png" width="50%">
                     </div>
                     <br>
-                    <input type="file" id="upload" name="upload" accept="image/*" required="true" class="filestyle" data-buttonName="btn-primary" data-buttonBefore="true"> 
-                    <hr>
-                    <div id="buttonPost" class="form-group">         
-                    <input type="submit" value="Upload Post" class="btn btn-primary col-md-offset-1" required="true">
+                        <input type="file" id="upload" name="upload" accept="image/*" required="true" class="filestyle" data-buttonName="btn-primary" data-buttonBefore="true">
+                    <div class="form-group">
+                        <h3>Filter Photo</h3>
+                        <div class="checkbox-inline">
+                            <label for="myNostalgia">My Nostalgia</label>
+                            <input type="radio" name="filter" id="myNostalgia" value="myNostalgia" onclick="applyMyNostalgiaFilter();" required="true">
+                        </div>
+                        <div class="checkbox-inline">
+                            <label for="grayscale">Grayscale</label>
+                            <input type="radio" name="filter" id="grayscale" value="grayscale" onclick="applyGrayscaleFilter();" required="true">
+                        </div>
+                        <div class="checkbox-inline">
+                            <label for="original">Original</label>
+                            <input type="radio" name="filter" id="lomo" value="lomo" onclick="revertToOriginal();">
+                        </div>
+                    </div>       
+                    <div class="form-group">         
+                    <input type="submit" value="Upload image to wall!" class="btn btn-primary col-md-offset-1" required="true">
+                    <input type="button" id="resetForm" value="Start over!" class="btn btn-default">
                     </div>
                 </form>
             </div>
