@@ -60,3 +60,12 @@ function submit()
     parent.appendChild(filteredImage);   
 }
 
+function upvote()
+{
+    //code to upvote in the server
+}
+
+function downvote()
+{
+    //code to downvote in the server
+}
