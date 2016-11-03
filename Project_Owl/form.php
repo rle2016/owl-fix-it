@@ -72,20 +72,23 @@ if (isset($_SESSION['username_input']))
                 <form id="form" class="form-horizontal" method="POST" action="wall.php" enctype="multipart/form-data">
                     
                     <div class="form-group">
-                        <label for="title" class="control-label col-xs-1">Title</label>
-                        <div class="col-xs-11">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-header fa-fw"></span></span>
-                                <input type="text" class="form-control" id="title" name="title" 
-                            maxlength="20" size="20" value="" required autofocus>
+                        <label for="Location" class="control-label col-xs-1">Location</label>
+                            <div class="col-xs-11">
+                            <div class="drop-down">
+                                <select class="form-control" id="select" name="Location">
+                                <option  value="76(BK)">76(BK)-Bookstore</option>
+                                <option  value="69(CO)">69(CO)-Campus Operation Building</option>
+                            </select>
                             </div>
-                        </div>
+                            </div>
                     </div>
                       
                     <div class="form-group">
                         <label for="text" class="control-label col-xs-1">Text</label>
                         <div class="col-xs-11">
+                            <div class="description">
                             <textarea class="form-control" id="text" name="text" maxlength="140" placeholder="140 characters" required></textarea>
+                            </div>
                         </div>
                     </div>
                     
