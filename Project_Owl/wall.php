@@ -41,13 +41,7 @@ if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['filter']))
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Project 5</title>
-    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <title>Owl-Fix-It</title>
     
     <link rel="stylesheet" href="css/styles.css">
     
@@ -68,57 +62,42 @@ if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['filter']))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Home</a>
+                <a href="index.php"><img src="images/owl-logo.png" class="img-responsive" height="260" width="160" alt=""></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="form.php">Upload Photo</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="logout.php">Logout</a>
-                    </li>
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="page-scroll" href="#top">Home</a></li>
+                    <li><a class="page-scroll" href="form.php">Upload Photo</a></li>
+                    <li><a class="page-scroll" href="settings.php">Settings</a></li>
+                    <li><a class="page-scroll" href="logout.php">Logout</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
+            </div>
+            <!-- /.container-fluid -->
     </nav>
-    <hr>
-    <br>
     <div id="container">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 text-center">
-    <?php
-    echo getPostcards($connection); 
-    ?>
+
+        <div class="row">
+            <div class="col-lg-4 text-center col-lg-offset-4">
+            <?php
+            echo getPostcards($connection); 
+            ?>
+            </div>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <div id="footer">
-    <footer class="text-center">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyright &copy; Ryan Le 2016
-                    </div>
-                </div>
-    </footer>
-    </div>
-    </div>
+   
     <!-- JavaScript placed at bottom for faster page loadtimes. -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
     <script src="js/functions.js"></script>
-
 </body>
 </html>
 
