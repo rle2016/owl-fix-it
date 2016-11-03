@@ -59,6 +59,7 @@ if (isset($_SESSION['username_input']))
                     <li class="hidden"><a href="#page-top"></a></li>
                     <li><a class="page-scroll" href="wall.php">Home</a></li>
                     <li><a class="page-scroll" href="form.php">Upload Photo</a></li>
+                    <li><a class="page-scroll" href="settings.php">Settings</a></li>
                     <li><a class="page-scroll" href="logout.php">Logout</a></li>
                 </ul>
             </div>
@@ -70,7 +71,6 @@ if (isset($_SESSION['username_input']))
         <div class="row">
             <div id="formParent" class="col-md-6 col-md-offset-3 text-center">
                 <form id="form" class="form-horizontal" method="POST" action="wall.php" enctype="multipart/form-data">
-                    
                     <div class="form-group">
                         <label for="Location" class="control-label col-xs-1">Location</label>
                             <div class="col-xs-11">
