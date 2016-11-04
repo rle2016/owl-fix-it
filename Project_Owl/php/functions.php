@@ -45,7 +45,7 @@ function getPostcards($_db)
     {
         $output = $output . '<div class="panel panel-primary"><div class="panel-heading">"' . $row['STATUS_TITLE']
         . '" posted by ' . $row['USER_USERNAME'] 
-        . '</div><div class="body"><table><tr><td><p><img src="Upvote.png" onclick="upvote()"  width="50px" height="50px"></p><p><img src="Downvote.png" onclick="downvote()" width="50px" height="50px"></p></td><td><img src="' . 'users/' . $row['IMAGE_NAME'] . '" id="' . $row['IMAGE_FILTER'] . '" width="300px"><br>' . $row['STATUS_TEXT'] . '</td></tr></table></div></div>' ;
+        . '</div><div class="body"><table><tr><td><p><button type="button" class="btn btn-default btn-sm" onclick="upvote()"><span class="glyphicon glyphicon-arrow-up"></span></button></p><p><button type="button" class="btn btn-default btn-sm" onclick="downvote()"><span class="glyphicon glyphicon-arrow-down"></span></button></p></td><td><img src="' . 'users/' . $row['IMAGE_NAME'] . '" id="' . $row['IMAGE_FILTER'] . '" width="300px"><br>' . $row['STATUS_TEXT'] . '</td></tr></table></div></div>' ;
     }
     
     return $output;
