@@ -1,0 +1,114 @@
+.main-head-section h3 {
+  font-size: 2em;
+  color: #26313b;
+  font-weight: 400;
+  margin: 0 0 1em;
+  padding-bottom: 15px;
+  text-align: center;
+  font-family: 'Libre Baskerville', serif;
+}
+    
+.contact-head iframe{
+	min-height:380px;
+	width: 100%;
+	border: none;
+}
+    
+.contact-map iframe {
+	min-height:380px;
+	width: 100%;
+	border: none;
+}
+.contact_top {
+	padding:4em 0 0em 0;
+}
+.contact-head h3 {
+	text-align: left;
+	color: #fff;
+	font-size: 2em;
+	text-transform: uppercase;
+	font-weight: 700;
+	width: 73%;
+	margin: 0 auto;
+}
+.contact-head p {
+	text-align: left;
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: 300;
+	width: 73%;
+	margin: 0.2em auto;
+}
+.contact-top h3 {
+	color: #FFF;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 400;
+	margin: 0 0 1em;
+}
+.contact_left p{
+	color:#999;
+	font-size:0.85em;
+	line-height:1.5em;
+	margin-bottom: 1em;
+}
+.contact_left p span{
+	cursor:pointer;
+	color:#2aacc8;
+}
+.contact_left p span:hover{
+	text-decoration:underline;
+}
+
+.form_details input[type="text"], .form_details textarea {
+	padding: 11px;
+	width: 51%;
+	font-size: 1em;
+	margin: 10px 0px;
+	border:1px solid #bbb;
+	color: #bbb;
+	background: none;
+	-webkit-appearance: none;
+	float: left;
+	outline: none;
+	font-weight:400;
+	border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	-o-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+}
+.form_details textarea {
+	height:200px;
+	resize:none;
+	width:80%;
+}
+.form_details input[type="submit"] {
+	margin-top:1em;
+	color: #fff;
+	font-size: 1em;
+	padding: 0.7em 1em;
+	-webkit-appearance:none;
+	text-transform: uppercase;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	font-weight:400;
+	border: none;
+	text-transform:uppercase;
+	outline: none;
+	cursor: pointer;
+	width:20%;
+	background:#26313b;
+	border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	-o-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+}
+.form_details input[type="submit"]:hover {
+ 	text-decoration: none;
+	color: #fff;
+	background:#036;
+}
