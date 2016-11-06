@@ -1,14 +1,13 @@
 <?php
-    include("connection.php");
+    include("db_connection.php");
+
     if(isset($_POST['submit']) && $_POST['submit'] = "submit")
     {
         $mail = mysql_real_escape_string($_POST['mail']); 
         $password = md5($_POST['password']);
         $newpassword = md5($_POST['newpassword']);
         $confirmnewpassword = md5($_POST['confirmnewpassword']);
-
         $result = mysql_query("SELECT password FROM registration WHERE email='$mail'");
-
             if(!$result)
             {
                 echo "The email entered does not exist!";
@@ -18,12 +17,10 @@
             {
                 echo "Entered an incorrect password";
             }
-
             if($newpassword == $confirmnewpassword)
             {
                 $sql = mysql_query("UPDATE registration SET password = '$newpassword' WHERE email = '$mail'");      
             }
-
             if(!$sql)
             {
                 echo "Congratulations, password successfully changed!";
@@ -34,15 +31,6 @@
             }
         }     
     ?>
-
-
-    <form name="newprwd" action="" method="post">
-    Email :<input type="text" name="mail" value=""><br>
-    Password :<input type="password" name="password" value=""><br>
-    New Password :<input type="password" name="newpassword" value=""><br>
-    Confirm Password :<input type="password" name="confirmnewpassword" value=""><br>
-    <input type="submit" name="submit" value="submit"><br>
-    </form>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -100,36 +88,34 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Z-Number</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="registerUser" name="registerUser_input" placeholder="Z-Number" required="true">
+                                        <input type="text" class="form-control" name="mail" value=""  >
                                         <?php echo $error ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" id="registerPassword" name="registerPassword_input" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Confirm Password</label>
+                                    <label class="col-md-3 control-label">New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword_input" placeholder="Confirm Password">
+                                        <input type="password" class="form-control" name="newpassword" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Confirm New Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="confirmnewpassword" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <input type="submit" value="Register" name="submit" id="submit" />
+                                        <input type="submit" name="submit" value="submit" />
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-12 control">
-                                        <div id="middle" >
-                                        <a href="index.php">Sign-In</a>
-                                        </div>
-                                    </div>
-                                </div> 
                             </form>
                         </div>                     
                     </div>  
@@ -141,18 +127,6 @@
 
     <script src="js/jquery.validate.js"></script>
     <script>
-    // just for the demos, avoids form submit
-    jQuery.validator.setDefaults({
-    success: "valid"
-    });
-    $( "#signupform" ).validate({
-        rules: {
-            registerPassword_input: "required",
-            confirmPassword_input: {
-                equalTo: "#registerPassword"
-            }
-        }
-    });
     </script>
     </body>
 </html>
