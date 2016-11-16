@@ -5,15 +5,15 @@ require_once "php/functions.php";
 
 session_start();
 
-if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['filter']))
+if(isset($_POST['location']) && isset($_POST['description']))
 {    
-    $title = sanitizeString($connection, $_POST['title']);
-    $text = sanitizeString($connection, $_POST['text']);
-    $filter = sanitizeString($connection, $_POST['filter']);
+    $location = sanitizeString($connection, $_POST['location']);
+    $description = sanitizeString($connection, $_POST['description']);
     $user = $_SESSION['username_input'];
     
     $time = $_SERVER['REQUEST_TIME'];
     $file_name = $time . '.jpg';
+    $post_Status = "In Progress";
 
     if ($_FILES)
     {
@@ -23,7 +23,7 @@ if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['filter']))
         //echo "Uploaded image '$file_name'<br /><img src='$dstFolder/$file_name'/>";
     }
 
-    SavePostToDB($connection, $user, $title, $text, $time, $file_name, $filter);
+    SavePostToDB($connection, $user, $description, $location, $time, $post_Status, $file_name);
 }
 
   if (isset($_SESSION['username_input']))
