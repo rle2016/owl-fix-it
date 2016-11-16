@@ -10,16 +10,16 @@ function sanitizeString($_db, $str)
 }
 
 
-function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filter)
+function SavePostToDB($_db, $_user, $_description, $_location, $_time, $_status, $_file_name)
 {
     /* Prepared statement, stage 1: prepare query */
-    if (!($stmt = $_db->prepare("INSERT INTO WALL(USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME, IMAGE_FILTER) VALUES (?, ?, ?, ?, ?, ?)")))
+    if (!($stmt = $_db->prepare("INSERT INTO owl_wall(post_id, posted_by, post_description, post_location, post_date, post_status, image_name) VALUES ('id',?, ?, ?, ?, ?, ?)")))
     {
         echo "Prepare failed: (" . $_db->errno . ") " . $_db->error;
     }
 
     /* Prepared statement, stage 2: bind parameters*/
-    if (!$stmt->bind_param('ssssss', $_user, $_title, $_text, $_time, $_file_name, $_filter))
+    if (!$stmt->bind_param('ssssss', $_user, $_description, $_location, $_time, $_status, $_file_name))
     {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
@@ -33,7 +33,7 @@ function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filt
 
 function getPostcards($_db)
 {
-    $query = "SELECT USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME, IMAGE_FILTER FROM WALL ORDER BY TIME_STAMP DESC";
+    $query = "SELECT posted_by, post_location, post_description, post_status, image_name, post_date FROM owl_wall";
     
     if(!$result = $_db->query($query))
     {
@@ -43,9 +43,9 @@ function getPostcards($_db)
     $output = '';
     while($row = $result->fetch_assoc())
     {
-        $output = $output . '<div class="panel panel-primary"><div class="panel-heading">"' . $row['STATUS_TITLE']
-        . '" posted by ' . $row['USER_USERNAME'] 
-        . '</div><div class="body"><img src="' . 'users/' . $row['IMAGE_NAME'] . '" id="' . $row['IMAGE_FILTER'] . '" width="300px"><br>' . $row['STATUS_TEXT'] . '</div></div>' ;
+        $output = $output . '<div class="panel panel-primary"><div class="panel-heading">"' . $row['post_location']
+        . '" posted by ' . $row['posted_by'] 
+        . '</div><div class="body"><img src="' . 'users/' . $row['image_name'] . '" width="300px"><br>' . $row['post_status'] . '</div></div>' ;
     }
     
     return $output;
