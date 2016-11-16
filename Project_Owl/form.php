@@ -75,7 +75,7 @@ if (isset($_SESSION['username_input']))
                         <label for="Location" class="control-label col-xs-1">Location</label>
                             <div class="col-xs-11">
                             <div class="drop-down">
-                                <select class="form-control" id="select" name="Location">
+                                <select class="form-control" id="select" name="location" id="location">
                                 <option value="Select Option">Select Option</option>
                                 <option  value="38(GY)-ARENA">38(GY)-ARENA</option>
                                 <option  value="11(FH)-ATHLETIC FIELD HOUSE">11(FH)-ATHLETIC FIELD HOUSE</option>
@@ -175,10 +175,10 @@ if (isset($_SESSION['username_input']))
                     </div>
                       
                     <div class="form-group">
-                        <label for="text" class="control-label col-xs-1">Text</label>
+                        <label for="text" class="control-label col-xs-1">Description</label>
                         <div class="col-xs-11">
                             <div class="description">
-                            <textarea class="form-control" id="text" name="text" maxlength="140" placeholder="140 characters" required></textarea>
+                            <textarea class="form-control" id="description" name="description" maxlength="140" placeholder="140 characters" required></textarea>
                             </div>
                         </div>
                     </div>
