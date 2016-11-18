@@ -1,36 +1,63 @@
-<?php
-    include("db_connection.php");
+<?
+$db_hostname = "localhost";
+$db_username = "rle2016";
+$db_password = "RakPjEua7n";
+$db_database = "rle2016";
 
-    if(isset($_POST['submit']) && $_POST['submit'] = "submit")
-    {
-        $mail = mysql_real_escape_string($_POST['mail']); 
-        $password = md5($_POST['password']);
-        $newpassword = md5($_POST['newpassword']);
-        $confirmnewpassword = md5($_POST['confirmnewpassword']);
-        $result = mysql_query("SELECT password FROM registration WHERE email='$mail'");
-            if(!$result)
-            {
-                echo "The email entered does not exist!";
-            }
-            else
-            if($password != mysql_result($result, 0))
-            {
-                echo "Entered an incorrect password";
-            }
-            if($newpassword == $confirmnewpassword)
-            {
-                $sql = mysql_query("UPDATE registration SET password = '$newpassword' WHERE email = '$mail'");      
-            }
-            if(!$sql)
-            {
-                echo "Congratulations, password successfully changed!";
-            }
-            else
-            {
-                echo "New password and confirm password must be the same!";
-            }
-        }     
-    ?>
+require_once "php/db_connect.php";
+require_once "php/functions.php";
+
+session_start();
+
+if (isset($_SESSION['username_input']))
+  {
+    $username = $_SESSION['username_input'];
+    $password = $_SESSION['password_input'];
+ }
+  else {
+    echo "<script type='text/javascript'>alert('Please Sign-In to Access This');window.location.href='index.php'</script>";
+}
+
+  function destroy_session_and_data()
+  {
+    $_SESSION = array();
+    setcookie(session_name(), '', time() - 2592000, '/');
+    session_destroy();
+  }
+
+//Connect to database
+$connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+
+if ($connection->connect_error) die($connection->connect_error);
+
+  $error = '';
+
+  if (isset($_POST['password']) && !empty($_POST['password']) && isset($_POST['new_password']) && !empty($_POST['new_password'])
+    && isset($_POST['password_again']) && !empty($_POST['password_again']))
+    
+        
+        $result = mysql_query("SELECT password FROM users WHERE login='$u'");
+        if(!$result)
+        {
+        echo "The password you have entered does not exist";
+        }
+        else if($password!= mysql_result($result, 0))
+        {
+        echo "You entered an incorrect password";
+        }
+        if($newpassword=$confirmnewpassword)
+        $sql=mysql_query("UPDATE users SET password='$newpassword' where login='$password'");
+        if($sql)
+        {
+        echo "Congratulations You have successfully changed your password";
+        }
+       else
+        {
+       echo "The new password and confirm new password fields must be the same";
+       }
+      ?>
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,11 +88,13 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden"><a href="#page-top"></a></li>
-                        <li><a class="page-scroll" href="team.html">Meet Our Team</a></li>
-                        <li><a class="page-scroll" href="contact.html">Contact</a></li>
-                    </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="page-scroll" href="#top">Home</a></li>
+                    <li><a class="page-scroll" href="form.php">Upload Photo</a></li>
+                    <li><a class="page-scroll" href="settings.php">Settings</a></li>
+                    <li><a class="page-scroll" href="logout.php">Logout</a></li>
+                </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -83,17 +112,10 @@
 
                         <div id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
-                        <form id="signupform" class="form-horizontal" role="form" action="register.php" method="post">
-                                
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Z-Number</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="mail" value=""  >
-                                        <?php echo $error ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Password</label>
+                        <form id="signupform" class="form-horizontal" role="form" action="settings.php" method="post">
+                
+                            <div class="form-group">
+                                    <label class="col-md-3 control-label">Current Password</label>
                                     <div class="col-md-9">
                                         <input type="password" class="form-control" name="password" value="">
                                     </div>
@@ -101,13 +123,13 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="newpassword" value="">
+                                        <input type="password" class="form-control" name="new_password" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Confirm New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="confirmnewpassword" value="">
+                                        <input type="password" class="form-control" name="password_again" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
