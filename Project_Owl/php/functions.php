@@ -1,6 +1,5 @@
 <?php
 require_once "db_connect.php";
-
 function sanitizeString($_db, $str)
 {
     $str = strip_tags($str);
@@ -8,8 +7,6 @@ function sanitizeString($_db, $str)
     $str = stripslashes($str);
     return mysqli_real_escape_string($_db, $str);
 }
-
-
 function SavePostToDB($_db, $_user, $_description, $_location, $_time, $_status, $_file_name)
 {
     /* Prepared statement, stage 1: prepare query */
@@ -17,20 +14,17 @@ function SavePostToDB($_db, $_user, $_description, $_location, $_time, $_status,
     {
         echo "Prepare failed: (" . $_db->errno . ") " . $_db->error;
     }
-
     /* Prepared statement, stage 2: bind parameters*/
     if (!$stmt->bind_param('ssssss', $_user, $_description, $_location, $_time, $_status, $_file_name))
     {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-
     /* Prepared statement, stage 3: execute*/
     if (!$stmt->execute())
     {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 }
-
 function getPostcards($_db)
 {
     $query = "SELECT posted_by, post_location, post_description, post_status, image_name, post_date FROM owl_wall";
@@ -45,7 +39,12 @@ function getPostcards($_db)
     {
         $output = $output . '<div class="panel panel-primary"><div class="panel-heading">"' . $row['post_location']
         . '" posted by ' . $row['posted_by'] 
-        . '</div><div class="body"><img src="' . 'users/' . $row['image_name'] . '" width="300px"><br>' . $row['post_status'] . '</div></div>' ;
+        . '</div><div class="panel panel-body panel-post"><div class="col-lg-2">
+                            <button id="fix_button" type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-triangle-top"> Fix</span>
+                            </button>
+                        </div>
+                        <div class="col-lg-5 post"><img src="' . 'users/' . $row['image_name'] . '" class="img-responsive" width="300px"><br>' . $row['post_status'] . '</div></div></div>' ;
     }
     
     return $output;
