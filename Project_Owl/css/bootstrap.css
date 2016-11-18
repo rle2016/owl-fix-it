@@ -7020,3 +7020,23 @@ a.list-group-item-danger.active:focus {
 .popover {
   color: #2c3e50;
 }
+
+.panel-post {
+	display: flex; align-items: center;
+}
+
+.main {
+	padding-top: 100px;
+}
+
+.post {
+	padding-left: 20px;
+}
+
+.contact-main {
+  padding-top: 100px;
+}
+
+.about {
+  padding-top: 100px;
+}
