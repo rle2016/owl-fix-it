@@ -60,3 +60,24 @@ function submit()
     parent.appendChild(filteredImage);   
 }
 
+function statusChange()
+{
+    var option = document.getElementById("Status").value;
+    
+    if(option == 0)
+    {
+        //Code to be ran if unresolved   
+    }
+    else if(option == 1)
+    {
+        //Code to be ran if in progress   
+    }
+    else if(option == 2)
+    {
+        //Code to be ran if resolved
+    }
+    else
+    {
+        //Code to be ran if there's an error in the status change
+    }
+}
