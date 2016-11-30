@@ -40,6 +40,11 @@ function getPostcards($_db)
         $output = $output . '<div class="panel panel-primary"><div class="panel-heading">"' . $row['post_location']
         . '" posted by ' . $row['posted_by'] 
         . '</div><div class="panel panel-body panel-post"><div class="col-lg-2">
+                            <select name="Status" id="Status" onchange="statusChange()">
+		                        <option value="0">Unresolved</option>
+		                        <option value="1">In Progress</option>
+		                        <option value="2">Resolved</option>
+	                        </select>
                             <button id="fix_button" type="button" class="btn btn-default">
                                 <span class="glyphicon glyphicon-triangle-top"> Fix</span>
                             </button>
